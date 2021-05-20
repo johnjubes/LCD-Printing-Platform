@@ -16,20 +16,30 @@
 
 import pandas as pd
 import csv
-from syringe_class import Syringe
+import serial
+import time
 
 def main():
     # check if layers.csv exists and is formatted correctly
     layers_data = pd.read_csv('../layer_profiles/test_layers.csv', sep=',').values
 
     # create progress.csv with layer number(0) and last syringe position(0)
-    with open('temp.csv', 'w', newline='') as progress_file:
+    with open('temp.csv', 'w') as progress_file:
         writer = csv.writer(progress_file)
         writer.writerow([0, 0.0])
 
-    # check if arduino is connected, move steppers to zero
-    syringe = Syringe()
-    syringe.setPosition(0.0)
-    syringe.moveToPosition()
+    # Zero steppers
+    messages = 0
+    while messages < 2:
+		ser = serial.Serial('/dev/ttyACM0', 9600, timeout = 1)
+		ser.flush()
+
+		#ser.write(b"-1.0\n")
+
+		if ser.in_waiting > 0:
+			line = ser.readline().decode('utf-8').rstrip()
+			print(line)
+		messages = messages + 1
+		time.sleep(1)
 
 main()
