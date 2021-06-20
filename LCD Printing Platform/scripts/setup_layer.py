@@ -13,10 +13,15 @@
 # To Do:
 #   Format Z axis output to match NanoDLP expectations
 
+# Setup:
+# Enter serial ID here
+serial_id = '/dev/ttyACM1'
+
 import pandas as pd
 import csv
 import serial
 import time
+from numpy import genfromtxt
 
 
 # method reads position info from the temp.csv and layers.csv files
@@ -32,6 +37,7 @@ def get_File_Values():
 
     # get current layer data from layers.csv
     layers_data = pd.read_csv('../layer_profiles/test_layers.csv', sep=',').values
+    #layers_data = genfromtxt('../layer_profiles/test_layers.csv', delimiter=',')
     new_z_pos = layers_data[current_layer][1]
     new_syringe_pos = layers_data[current_layer][2]
 
@@ -63,7 +69,7 @@ def main():
         ################################################################## 
         messages = 0
         while messages < 2:
-		    ser = serial.Serial('/dev/ttyACM0', 9600, timeout = 1)
+		    ser = serial.Serial('/dev/ttyACM1', 9600, timeout = 1)
 		    ser.flush()
 
 		    ser.write(out)
@@ -89,7 +95,7 @@ def main():
     with open('temp.csv', 'w') as progress_file:
         writer = csv.writer(progress_file)
         writer.writerow([current_layer + 1, new_syringe_pos])
-    
+
     return new_z_pos
 
 
