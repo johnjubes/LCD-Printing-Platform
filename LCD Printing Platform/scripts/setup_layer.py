@@ -21,7 +21,6 @@ import pandas as pd
 import csv
 import serial
 import time
-from numpy import genfromtxt
 
 
 # method reads position info from the temp.csv and layers.csv files
@@ -37,7 +36,6 @@ def get_File_Values():
 
     # get current layer data from layers.csv
     layers_data = pd.read_csv('../layer_profiles/test_layers.csv', sep=',').values
-    #layers_data = genfromtxt('../layer_profiles/test_layers.csv', delimiter=',')
     new_z_pos = layers_data[current_layer][1]
     new_syringe_pos = layers_data[current_layer][2]
 
