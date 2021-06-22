@@ -35,7 +35,8 @@ def get_File_Values():
         current_syringe_pos = float(split2[0])
 
     # get current layer data from layers.csv
-    layers_data = pd.read_csv('../layer_profiles/test_layers.csv', sep=',').values
+    #layers_data = pd.read_csv('../layer_profiles/test_layers.csv', sep=',').values
+    layers_data = pd.read_csv('test_layers.csv', sep=',').values
     new_z_pos = layers_data[current_layer][1]
     new_syringe_pos = layers_data[current_layer][2]
 

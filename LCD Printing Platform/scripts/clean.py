@@ -14,7 +14,7 @@ import os
 
 def main():
     # delete temp.csv
-    os.remove('temp.csv')
+    os.remove('/home/pi/printer/temp.csv')
 
     # reset syringe position if needed
 
