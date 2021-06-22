@@ -21,7 +21,7 @@ serial_id = '/dev/ttyACM1'
 #   check arduino connection (try catch)
 
 import csv
-import serial
+#import serial
 import time
 
 def main():
@@ -33,15 +33,15 @@ def main():
         writer.writerow([0, 0.0])
 
     # Check stepper connection (will throw error if not connected)
-    messages = 0
-    while messages < 2:
-        ser = serial.Serial(serial_id, 9600, timeout = 1)
-        ser.flush()
+    # messages = 0
+    # while messages < 2:
+    #     ser = serial.Serial(serial_id, 9600, timeout = 1)
+    #     ser.flush()
 
-        if ser.in_waiting > 0:
-            line = ser.readline().decode('utf-8').rstrip()
+    #     if ser.in_waiting > 0:
+    #         line = ser.readline().decode('utf-8').rstrip()
             
-        messages = messages + 1
-        time.sleep(1)
+    #     messages = messages + 1
+    #     time.sleep(1)
 
 main()
