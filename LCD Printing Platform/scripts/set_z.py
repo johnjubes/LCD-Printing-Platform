@@ -1,3 +1,13 @@
+# File name: set_z.py
+# Author: John Jubenville
+# Date created: 06/22/2021
+# Date last modified: 06/23/2021
+# Python Version: 3.9 / 2.7
+
+# Function:
+# set_z.py is called at the start of each layer
+# It moves the plate to the height specified in the layers.csv file by returning a line of g-code to NanoDLP
+
 import sys
 import csv
 import pandas as pd
@@ -10,7 +20,7 @@ def get_File_Values():
 
         current_layer = int(split[0])
 
-    # get current layer data from test_layers.csv
+    # get layer height from test_layers.csv
     layers_data = pd.read_csv('test_layers.csv', sep=',').values
     new_z_pos = layers_data[current_layer][1]
 
