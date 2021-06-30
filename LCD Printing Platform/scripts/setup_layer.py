@@ -79,9 +79,9 @@ def main():
         time.sleep(abs(int(move))*4)
 
 
-    # update progress.tmp
-    with open('temp.csv', 'w') as progress_file:
-        writer = csv.writer(progress_file)
-        writer.writerow([current_layer + 1, new_syringe_pos])
+    # update progress.tmp (moved to update_layer.py)
+   # with open('temp.csv', 'w') as progress_file:
+    #    writer = csv.writer(progress_file)
+     #   writer.writerow([current_layer + 1, new_syringe_pos])
 
 main()
