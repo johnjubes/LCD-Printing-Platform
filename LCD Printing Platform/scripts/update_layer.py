@@ -1,17 +1,12 @@
-# File name: init_print.py
+# File name: update_layer.py
 # Author: John Jubenville
-# Date created: 06/23/2021
-# Date last modified: 05/09/2021
+# Date created: 06/30/2021
+# Date last modified: 06/30/2021
 # Python Version: 3.9 / 2.7
 
 # Function:
-# setup_layer.py is called by NanoDLP before each layer begins to print.
-# It determines if a change should be made to the syringe position, 
-# then calls the move function on the Arduino via serial.
+# increases the current layer in temp.csv by 1, updates position
 
-# Setup:
-# Enter serial ID here
-serial_id = '/dev/ttyACM1'
 
 import pandas as pd
 import csv
