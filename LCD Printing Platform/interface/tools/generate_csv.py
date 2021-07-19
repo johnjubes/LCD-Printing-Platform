@@ -5,9 +5,9 @@ import csv
 
 def get_input():
 
-    #enter layer height and print height here
-    layer_height = .035
-    print_height = 1.05 + .175
+    #enter layer height and print height in mm here
+    layer_height = .1
+    print_height = 5.0
 
     return layer_height, print_height
 
@@ -18,16 +18,17 @@ def main():
     number_of_layers = print_height / layer_height
 
     f = open('layers.csv', 'w')
-    f.write("Layer #,Z Axis Value(mm),Syringe Pos\n")
+    f.write("Layer #,Z Axis Value(mm),Syringe Pos(rotations),Exposure(sec)\n")
     f.close
     f = open('layers.csv', 'a')
 
     z_pos = 0.0
     syringe_pos = 0.0
+    exposure = -1.1
     for layer in range(int(number_of_layers)):
         z_pos += layer_height
         z_formatted = "{:.3f}".format(z_pos)
-        row = str(layer+1) + ',' + z_formatted + ',' + str(syringe_pos) + '\n'
+        row = str(layer+1) + ',' + z_formatted + ',' + str(syringe_pos) + ',' + str(exposure) + '\n'
         f.write(row)
     f.write(row)
 
